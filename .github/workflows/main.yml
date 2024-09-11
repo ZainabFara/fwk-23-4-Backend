@@ -1,0 +1,17 @@
+name: Git action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\": \"New push to main branch!\"}" \
+          https://discord.com/api/webhooks/1283366111533994027/UXNXFIMwc9QA119qkrLD8wMuSPc__4xWWVztcwAyBZ5uvNRmrY4YmmeUMPGUCRJTiDjf
+
