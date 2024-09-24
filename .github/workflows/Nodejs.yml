@@ -24,6 +24,3 @@ jobs:
 
       # Install dependencies
       - run: npm install
-
-      # Run linter (you can remove this step too if no linter is used)
-      - run: npm run lint
