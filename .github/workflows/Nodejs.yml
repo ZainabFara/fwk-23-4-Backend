@@ -21,9 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-
-      # Install dependencies
-      - run: npm install
-
       - name: Run tests
         run: npm run test
+      # Install dependencies
+      - run: npm install
