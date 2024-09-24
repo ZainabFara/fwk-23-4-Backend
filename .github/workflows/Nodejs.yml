@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code from the repository
+      - uses: actions/checkout@v3
+
+      # Set up Node.js with the correct version
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Install dependencies
+      - run: npm install
+
+      # Run linter (you can remove this step too if no linter is used)
+      - run: npm run lint
