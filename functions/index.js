@@ -1,14 +1,12 @@
-const app = require('./app.js'); // Import your express configuration
+const app = require('./app.js'); 
 const { onRequest } = require("firebase-functions/v2/https");
 const cors = require('cors');
 
-// Set up CORS in index.js
 app.use(cors({
-    origin: '*', // Allow all origins
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
-    credentials: true // Allow credentials if necessary
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true 
 }));
 
-// Export the Firebase function
 exports.api = onRequest(app);
