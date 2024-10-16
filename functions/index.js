@@ -9,4 +9,6 @@ app.use(cors({
     credentials: true 
 }));
 
-exports.api = onRequest(app);
+exports.api = onRequest({
+    region: 'europe-west1'
+}, app);
