@@ -64,7 +64,7 @@ app.post("/chat", async (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-    const { email, username, password } = req.body;
+    const { username, password, email } = req.body;
 
     if (!username || !password || !email) {
         return res.status(400).json({ error: "Required fields are empty!" });
@@ -72,14 +72,13 @@ app.post("/register", async (req, res) => {
 
     try {
         const response = await fetch(
-            "http://localhost:3000/api/auth/register",
+            "http://localhost:3002/api/auth/register",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, username, password }),
+                body: JSON.stringify({ username, password, email }),
             }
         );
-
         const data = await response.json();
         if (response.ok) {
             res.status(200).json(data);
@@ -87,7 +86,6 @@ app.post("/register", async (req, res) => {
             res.status(response.status).json(data);
         }
     } catch (error) {
-        console.error("Error registering user:", error.message);
         res.status(500).json({
             error: "Error registering user",
             details: error.message,
