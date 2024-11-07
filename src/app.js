@@ -4,10 +4,12 @@ const PDFDocument = require("pdfkit");
 const cors = require("cors");
 const { HfInference } = require("@huggingface/inference");
 require("dotenv").config();
+const { handleHealthCheck } = require('@kunalnagarco/healthie');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(handleHealthCheck());
 
 const HUGGING_FACE_API_KEY = process.env.HUGGING_FACE_API_KEY;
 
